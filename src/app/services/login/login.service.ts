@@ -57,6 +57,8 @@ export class LoginService {
 		}
 
 		return this.token;
-	}
+  }
+  
+
 
 }

@@ -3,7 +3,7 @@
     <div class="identity-alert alert alert-success" *ngIf="token">
         ¡Te has identificado correctamente!
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-5 no-padding">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-5 ">
         <p>
             <label for="email">Email:</label>
             <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email" required>
