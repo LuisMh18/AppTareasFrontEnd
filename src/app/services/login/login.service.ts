@@ -26,6 +26,12 @@ export class LoginService {
 
   }
 
+  logout(token){
+    console.log(token);
+    return this._http.get(this.url+'logout?token='+token)
+                       .map(res => res.json());
+  }
+
   getIdentity(){
     let identity = JSON.parse(localStorage.getItem('identity'));
     console.log('hola');

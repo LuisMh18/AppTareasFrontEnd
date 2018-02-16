@@ -39,7 +39,17 @@ export class LoginComponent implements OnInit {
   //console.log(this._loginService.getToken());
    // console.log('id: ' + ide);
    // console.log('token: ' + tk);
+   this.redirectIdentity();
   }
+
+  redirectIdentity(){
+    let token = this._loginService.getToken();
+    if(token != null){
+      this._router.navigate(['/']);
+    }
+
+  }
+
 
   onSubmit(){
     //console.log(this.user);
@@ -49,6 +59,8 @@ export class LoginComponent implements OnInit {
           let token = response;
           this.token = token;
           localStorage.setItem('token', this.token);
+          //this._router.navigate(['/']); //redirigimos a la home
+          window.location.href = '/';
       }, error => {
         console.log(<any>error);
       }

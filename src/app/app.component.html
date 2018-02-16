@@ -23,26 +23,14 @@
           </a>
         </li>
         <li>
-          <a [routerLink]="['/']">
+          <a [routerLink]="['/']" *ngIf="token">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             Crear tarea
           </a>
         </li>
-        <li>
-          <a [routerLink]="['/']">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            Ajustes
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/']">
-            <span class="glyphicon glyphicon-logout" aria-hidden="true"></span>
-            Salir
-          </a>
-        </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!token">
         <li>
           <a [routerLink]="['/login']">
             Acceder
@@ -51,6 +39,21 @@
         <li>
           <a [routerLink]="['/register']">
             Registro
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" *ngIf="token">
+        <li>
+          <a [routerLink]="['/']">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            Ajustes
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()" style="cursor:pointer;">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            Salir
           </a>
         </li>
       </ul>
@@ -64,6 +67,9 @@
 <!-- se encarga de cargar el componente dependiendo de la configuración de las rutas -->
 <div class="container">
   <div class="row">
+      <div class="alert alert-danger" *ngIf="cession_cerrada">
+          {{ cession_cerrada }}
+      </div>
     <router-outlet></router-outlet>
   </div>
 </div>
