@@ -38,6 +38,7 @@ export class AppComponent {
         let cession_cerrada = response.data.message;
         this.cession_cerrada = cession_cerrada;
         localStorage.removeItem('token');
+        localStorage.removeItem('identity');
         this.token = null;
         this._router.navigate(['/']); //redirigimos al  login
       }, error => {

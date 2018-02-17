@@ -16,7 +16,7 @@ export class LoginService {
    }
 
 
-   signup(user_login): Observable<Response> {
+   signup(user_login): Observable<any> {
     let params = JSON.stringify(user_login);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -26,15 +26,19 @@ export class LoginService {
 
   }
 
+  getUser(token){
+    return this._http.get(this.url+'user?token='+token)
+                       .map(res => res.json());
+  }
+
   logout(token){
-    console.log(token);
     return this._http.get(this.url+'logout?token='+token)
                        .map(res => res.json());
   }
 
   getIdentity(){
+    /* Y ahora, al recuperarlo, convertimos el string nuevamente en un objeto con JSON.parse */
     let identity = JSON.parse(localStorage.getItem('identity'));
-    console.log('hola');
 
 		if(identity != "undefined"){
 			this.identity = identity;
@@ -48,7 +52,7 @@ export class LoginService {
 
   getToken(){
     let token = localStorage.getItem('token');
-   // console.log("token:"+ this.token);
+    //console.log("token:--"+ this.token);
 
 		if(token != "undefined"){
 			this.token = token;
