@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/users/user.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UserComponent } from './components/users/user.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
