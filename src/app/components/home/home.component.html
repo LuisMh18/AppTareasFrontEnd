@@ -1,1 +1,33 @@
-<h1>{{ title }}</h1>
+<div class="col-md-12">
+    <div *ngIf="token == null">
+        Inicia Sesión para acceder a más opciones...
+    </div>
+    <div *ngIf="token != null">
+        <div class="all-tasks">
+            <table class="table table-hover table-striped" id="tasks-lists" *ngIf="tasks && tasks.length >= 1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Usuario</th>
+                        <th>Tarea</th>
+                        <th>Descripción</th>
+                        <th>Fecha de creación</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of tasks" class="task-item">
+                        <td>{{ task.id }}</td>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.created_at }}</td>
+                        <td>
+                            <a href="#" class="btn btn-warning">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

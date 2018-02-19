@@ -24,4 +24,13 @@ export class TaskService {
                        .map(res => res.json());
    }
 
+   getTask(token, page = null, dataform){
+    let params = JSON.stringify(dataform);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this._http.post(this.url+'tasks?token='+token, params, options)
+                       .map(res => res.json());
+
+   }
+
 }
