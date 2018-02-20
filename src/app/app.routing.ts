@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/users/user.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { DetalleComponent } from './components/tasks/detalle/detalle.component';
+import { UpdateComponent } from './components/tasks/update/update.component';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},//cuando el path este vacio que nos cargue la home
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     {path: 'user-edit', component: UserComponent}, 
     {path: 'new-task', component: TasksComponent}, 
     {path: 'task/:id', component: DetalleComponent}, 
+    {path: 'task-edit/:id', component: UpdateComponent}, 
     {path: '**', component: LoginComponent}//cuando la ruta no exista nos muestra el login
 ];
 

@@ -1,4 +1,7 @@
-<div class="col-md-12">
+<div class="div-loader" *ngIf="loading == 'show'">
+  <div class="loader"></div>
+</div>
+<div class="col-md-12" *ngIf="!loading || task">
   <h3>{{ page_title }}</h3>
 
   <form #taskNewForm="ngForm" (ngSubmit)="onSubmit();" class="col-md-5 no-padding">
@@ -19,7 +22,7 @@
               <option value="finished">Acabada</option>
             </select>
     </p>
-    <input type="submit" value="Agregar Tarea" class="btn btn-success" [disabled]="!taskNewForm.form.valid">
+    <input type="submit" value="{{ page_title }}" class="btn btn-success" [disabled]="!taskNewForm.form.valid">
 </form>
 
 </div>

@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/users/user.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { DetalleComponent } from './components/tasks/detalle/detalle.component';
+import { UpdateComponent } from './components/tasks/update/update.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DetalleComponent } from './components/tasks/detalle/detalle.component';
     HomeComponent,
     UserComponent,
     TasksComponent,
-    DetalleComponent
+    DetalleComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

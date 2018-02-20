@@ -39,4 +39,15 @@ export class TaskService {
                        .map(res => res.json());
    }
 
+   //Actualizar tarea
+  update(token, task): Observable<any> {
+    let params = JSON.stringify(task);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+      return this._http.put(this.url+'tasks/'+task.id+'?token='+token, params, options)
+                       .map(res => res.json());
+
+  }
+
 }
