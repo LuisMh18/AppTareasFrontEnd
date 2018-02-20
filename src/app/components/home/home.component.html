@@ -3,14 +3,17 @@
         Inicia Sesión para acceder a más opciones...
     </div>
     <div *ngIf="token != null">
-        <div class="all-tasks">
-            <table class="table table-hover table-striped" id="tasks-lists" *ngIf="tasks && tasks.length >= 1">
+        <div class="all-tasks" >
+            <div class="div-loader" *ngIf="loading == 'show'">
+                <div class="loader"></div>
+            </div>
+            <table class="table table-hover table-striped" id="tasks-lists" *ngIf="tasks && tasks.length >= 1" >
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Estado</th>
                         <th>Usuario</th>
                         <th>Tarea</th>
-                        <th>Descripción</th>
                         <th>Fecha de creación</th>
                         <th>Acción</th>
                     </tr>
@@ -18,9 +21,19 @@
                 <tbody>
                     <tr *ngFor="let task of tasks" class="task-item">
                         <td>{{ task.id }}</td>
+                        <td>
+                            <span class="label label-lg label-success" *ngIf="task.status == 'finished'">
+                                Acabada
+                            </span>
+                            <span class="label label-lg label-warning" *ngIf="task.status == 'todo'">
+                                Por hacer
+                            </span>
+                            <span class="label label-lg label-primary" *ngIf="task.status == 'new'">
+                                Nueva
+                            </span>
+                        </td>
                         <td>{{ task.name }}</td>
                         <td>{{ task.title }}</td>
-                        <td>{{ task.description }}</td>
                         <td>{{ task.created_at }}</td>
                         <td>
                             <a href="#" class="btn btn-warning">Editar</a>
@@ -28,6 +41,35 @@
                     </tr>
                 </tbody>
             </table>
+            <ul class="pagination" *ngIf="tasks && tasks.length >= 1">
+                <li>
+                    <a class="page" (click)="nPage(pageCurrent)">
+                        Primero 
+                    </a>
+                </li>
+                <li>
+                    <a class="page" (click)="nPage(pagePrev)" >
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li *ngFor="let page of pages">
+
+                    <a *ngIf="page == currentPage" class="page button_page_select" (click)="nPage(page)">{{ page}}</a>
+                    <a *ngIf="page != currentPage" class="page button_page" (click)="nPage(page)">{{ page }}</a>
+
+                </li>
+                <li>
+                    <a class="page" (click)="nPage(pNext)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="page" (click)="nPage(pageNext)">
+                        Último
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+
