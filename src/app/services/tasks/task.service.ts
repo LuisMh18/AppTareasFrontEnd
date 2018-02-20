@@ -25,13 +25,18 @@ export class TaskService {
    }
 
    getTask(token, page = null, dataform){
-     console.log('pagina: '+page);
     let params = JSON.stringify(dataform);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this._http.post(this.url+'tasks?token='+token+'&page='+page, params, options)
+    let ruta_page = (page == null || page == '') ? 'tasks?token='+token : 'tasks?token='+token+'&page='+page;
+    return this._http.post(this.url+ruta_page, params, options)
                        .map(res => res.json());
 
+   }
+
+   detailTask(token, id){
+    return this._http.get(this.url+'tasks/'+id+'?token='+token)
+                       .map(res => res.json());
    }
 
 }

@@ -40,7 +40,8 @@ export class AppComponent {
         localStorage.removeItem('token');
         localStorage.removeItem('identity');
         this.token = null;
-        this._router.navigate(['/']); //redirigimos al  login
+        //this._router.navigate(['/']);
+        window.location.href = '/login'; //redirigimos al  login
       }, error => {
         console.log(<any>error);
       }

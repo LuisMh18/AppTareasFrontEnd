@@ -57,17 +57,17 @@ export class HomeComponent implements OnInit {
    }
 
    getAllTasks(){
-    this._route.params.forEach((params: Params) =>{
       let page = null;
       this.data = {
         order:0,
         campo:0,
         search:0
       };
-      
-      this.showpagination(this.token, page, this.data);
 
-    });
+      if(this.token != null){
+        this.showpagination(this.token, page, this.data);
+      }
+    
    }
 
 

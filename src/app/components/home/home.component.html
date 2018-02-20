@@ -33,7 +33,9 @@
                             </span>
                         </td>
                         <td>{{ task.name }}</td>
-                        <td>{{ task.title }}</td>
+                        <td>
+                            <a [routerLink]="['task', task.id]">{{ task.title }}</a>
+                        </td>
                         <td>{{ task.created_at }}</td>
                         <td>
                             <a href="#" class="btn btn-warning">Editar</a>
