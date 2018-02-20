@@ -62,7 +62,11 @@ export class DetalleComponent implements OnInit {
             this._router.navigate(['/login']);
           }
         }, error => {
-          console.log(<any>error);
+          if(error.statusText == 'Unauthorized'){
+            this._loginService.token_expired();
+          } else {
+            console.log(<any>error);
+          }
         }
       );
     });

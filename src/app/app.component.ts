@@ -40,10 +40,15 @@ export class AppComponent {
         localStorage.removeItem('token');
         localStorage.removeItem('identity');
         this.token = null;
+        this.identity = null;
         //this._router.navigate(['/']);
         window.location.href = '/login'; //redirigimos al  login
       }, error => {
-        console.log(<any>error);
+        if(error.statusText == 'Unauthorized'){
+          this._loginService.token_expired();
+        } else {
+          console.log(<any>error);
+        }
       }
     );
 

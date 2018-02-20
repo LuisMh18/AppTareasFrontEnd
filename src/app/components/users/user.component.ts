@@ -39,10 +39,11 @@ export class UserComponent implements OnInit {
 
   getUser(){
     console.log(this.identity.id);
-
+    
     this._userService.getUser(this.identity.id, this.token).subscribe(
       response => {
-        //console.log(response);
+        console.log('token del user');
+        console.log(response);
         this.user = new User(
           response.data.data.id,
           0,
@@ -53,7 +54,12 @@ export class UserComponent implements OnInit {
           ''
         );
       }, error => {
-        console.log(<any>error);
+        //comprobamos si el eror es unauthorized, es decir si el token ya expiro
+        if(error.statusText == 'Unauthorized'){
+          this._loginService.token_expired();
+        } else {
+          console.log(<any>error);
+        }
       }
     );
 
@@ -68,9 +74,16 @@ export class UserComponent implements OnInit {
         //actualizamos el objeto del localStorage
         localStorage.setItem('identity', JSON.stringify(response.data.data));
       }, error => {
-        console.log(<any>error);
+        if(error.statusText == 'Unauthorized'){
+          this._loginService.token_expired();
+        } else {
+          console.log(<any>error);
+        }
+        
       }
     );
   }
+
+
 
 }

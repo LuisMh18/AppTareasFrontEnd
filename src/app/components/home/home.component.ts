@@ -49,7 +49,11 @@ export class HomeComponent implements OnInit {
             // como en un objeto lo convertimos en una cadena de texto con JSON.stringify
             localStorage.setItem('identity', JSON.stringify(identity));
           }, error => {
-            console.log(<any>error);
+            if(error.statusText == 'Unauthorized'){
+              this._loginService.token_expired();
+            } else {
+              console.log(<any>error);
+            }
           }
         );
     }
@@ -162,7 +166,11 @@ export class HomeComponent implements OnInit {
 
 
       }, error => {
-        console.log(<any>error);
+        if(error.statusText == 'Unauthorized'){
+          this._loginService.token_expired();
+        } else {
+          console.log(<any>error);
+        }
       }
     );
 

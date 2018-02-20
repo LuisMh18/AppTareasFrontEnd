@@ -36,6 +36,15 @@ export class LoginService {
                        .map(res => res.json());
   }
 
+  //limpiamos el localStorage y redireccionamos al login
+  token_expired(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('identity');
+    this.token = null;
+    this.identity = null;
+    window.location.href = '/login'; //redirigimos al  login
+  }
+
   getIdentity(){
     /* Y ahora, al recuperarlo, convertimos el string nuevamente en un objeto con JSON.parse */
     let identity = JSON.parse(localStorage.getItem('identity'));
@@ -52,7 +61,8 @@ export class LoginService {
 
   getToken(){
     let token = localStorage.getItem('token');
-    //console.log("token:--"+ this.token);
+    console.log("token:--"+ this.token);
+    console.log("identity:--"+ localStorage.identity);
 
 		if(token != "undefined"){
 			this.token = token;
