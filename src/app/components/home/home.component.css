@@ -66,4 +66,8 @@
 
     .button_page{
         background:white;
-    }
+	}
+	
+	.button_search{
+		margin-top: 23px;
+	}

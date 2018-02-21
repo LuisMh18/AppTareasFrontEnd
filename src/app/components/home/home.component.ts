@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   public styles;
   public stylePaginacion: string;
   public currentPage;//pagina actual
+  public order = 0;
+  public campo = 0;
+  public search;
 
   constructor(
      private _route: ActivatedRoute,
@@ -58,6 +61,9 @@ export class HomeComponent implements OnInit {
         );
     }
     this.getAllTasks();
+    localStorage.setItem("order", JSON.stringify(0));
+    localStorage.setItem("campo", JSON.stringify(0));
+    localStorage.setItem("search", JSON.stringify(0));
    }
 
    getAllTasks(){
@@ -77,14 +83,37 @@ export class HomeComponent implements OnInit {
 
    nPage(page){
     this.data = {
-      order:0,
-      campo:0,
-      search:0
+      order:localStorage.order,
+      campo:localStorage.campo,
+      search:localStorage.search
     };
+    console.log(this.data);
+    
     if(page != 'null'){
       this.showpagination(this.token, page, this.data);
     }
      
+   }
+
+   searchFilter(){
+    this.search = (this.search == undefined) ? '' : this.search;
+    this.data = {
+      order: this.order,
+      campo: this.campo,
+      search: this.search
+    };
+
+    console.log(this.data);
+
+    //guardamos los datos de busqueda en el localStorage y los convertimos a string con el metodo toString() de js
+    localStorage.setItem("order", this.order.toString());
+    localStorage.setItem("campo", this.campo.toString());
+    localStorage.setItem("search", this.search.toString());
+
+    let page = null;
+
+    this.showpagination(this.token, page, this.data);
+
    }
 
    showpagination(token, page, data){

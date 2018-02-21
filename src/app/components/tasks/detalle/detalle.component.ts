@@ -72,4 +72,21 @@ export class DetalleComponent implements OnInit {
     });
   }
 
+
+  //eliminar tarea
+  deleteTask(id){
+    this._taskService.deletelTask(this.token, id).subscribe(
+      response => {
+        console.log(response);
+        this._router.navigate(['/']);
+      }, error => {
+        if(error.statusText == 'Unauthorized'){
+          this._loginService.token_expired();
+        } else {
+          console.log(<any>error);
+        }
+      }
+    );
+  }
+
 }

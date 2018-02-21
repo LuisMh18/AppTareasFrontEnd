@@ -50,4 +50,10 @@ export class TaskService {
 
   }
 
+
+  deletelTask(token, id){
+    return this._http.delete(this.url+'tasks/'+id+'?token='+token)
+                       .map(res => res.json());
+   }
+
 }

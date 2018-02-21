@@ -61,8 +61,8 @@ export class LoginService {
 
   getToken(){
     let token = localStorage.getItem('token');
-    console.log("token:--"+ this.token);
-    console.log("identity:--"+ localStorage.identity);
+    //console.log("token:--"+ this.token);
+    //console.log("identity:--"+ localStorage.identity);
 
 		if(token != "undefined"){
 			this.token = token;

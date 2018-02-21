@@ -3,6 +3,36 @@
         Inicia Sesión para acceder a más opciones...
     </div>
     <div *ngIf="token != null">
+        <form role="search" class="col-md-12" *ngIf="loading != 'show'">
+            <div class="form-group col-md-3">
+                    <label for="order">Orden por</label>
+                    <select name="order" class="form-control" [(ngModel)]="order">
+                        <option value="0" selected="selected">Descendente</option>
+                        <option value="asc">Ascendente</option>
+                    </select>
+            </div>
+            <div class="form-group col-md-3">
+                    <label for="campo">Campo</label>
+                    <select name="campo" class="form-control" [(ngModel)]="campo">
+                        <option value="0" selected="selected">Todos</option>
+                        <option value="id">Id</option>
+                        <option value="name">Usuario</option>
+                        <option value="title">Tarea</option>
+                        <option value="status">Estado</option>
+                        <option value="created_at">Fecha</option>
+                    </select>
+            </div>
+            <div class="form-group col-md-3">
+                    <label for="">Mostrar solo</label>
+                    <input type="text" name="search" class="form-control" placeholder="¿Que tarea buscas?" [(ngModel)]="search">
+            </div>
+            <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-default button_search" (click)="searchFilter()">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar
+                </button>
+            </div>
+            
+        </form>
         <div class="all-tasks" >
             <div class="div-loader" *ngIf="loading == 'show'">
                 <div class="loader"></div>
