@@ -14,6 +14,6 @@
             <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="user.password" required>
             <span *ngIf="!password.valid && password.touched">La contrasea no es válida</span>
         </p>
-        <input type="submit" value="Entrar" class="btn btn-primary" [disabled]="!loginForm.form.valid">
+        <input type="submit" value="Entrar" class="btn btn-primary" >
     </form>
 </div>

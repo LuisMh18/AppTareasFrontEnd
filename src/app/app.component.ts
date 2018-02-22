@@ -35,7 +35,9 @@ export class AppComponent {
 
     this._loginService.logout(this.token).subscribe(
       response => {
-        let cession_cerrada = response.data.message;
+        console.log(response);
+        localStorage.setItem('sesion', 'finished');//sesion
+        let cession_cerrada = response.message;
         this.cession_cerrada = cession_cerrada;
         localStorage.removeItem('token');
         localStorage.removeItem('identity');

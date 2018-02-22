@@ -38,6 +38,7 @@ export class LoginService {
 
   //limpiamos el localStorage y redireccionamos al login
   token_expired(){
+    localStorage.setItem('sesion', 'token_expired');//sesion
     localStorage.removeItem('token');
     localStorage.removeItem('identity');
     this.token = null;

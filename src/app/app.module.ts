@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+//notificaciones
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 //importamos las rutas
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -31,7 +35,9 @@ import { UpdateComponent } from './components/tasks/update/update.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule
     
   ],
   providers: [
